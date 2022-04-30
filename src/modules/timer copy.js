@@ -1,18 +1,30 @@
 const timer = (discount) => {
-    const timerDaysBoxs = document.querySelectorAll('.count_1')
-    const timerHoursBoxs = document.querySelectorAll('.count_2')
-    const timerMinutesBoxs = document.querySelectorAll('.count_3')
-    const timerSecondsBoxs = document.querySelectorAll('.count_4')
+    const timerDaysBoxF = document.querySelector('.count_1')
+    const timerHoursBoxF = document.querySelector('.count_2')
+    const timerMinutesBoxF = document.querySelector('.count_3')
+    const timerSecondsBoxF = document.querySelector('.count_4')
 
-    const timerDaysBoxF = timerDaysBoxs[0]
-    const timerHoursBoxF = timerHoursBoxs[0]
-    const timerMinutesBoxF = timerMinutesBoxs[0]
-    const timerSecondsBoxF = timerSecondsBoxs[0]
+    const timerDaysBoxL = document.querySelector('.count_1:last')
+    const timerHoursBoxL = document.querySelector('.count_2:last')
+    const timerMinutesBoxL = document.querySelector('.count_3:last')
+    const timerSecondsBoxL = document.querySelector('.count_4:last')
     
     const timerDays = timerDaysBoxF.lastElementChild
     const timerHours = timerHoursBoxF.lastElementChild
     const timerMinutes = timerMinutesBoxF.lastElementChild
     const timerSeconds = timerSecondsBoxF.lastElementChild
+
+    const timerDaysSecondary = timerDaysBoxL.lastElementChild
+    const timerHoursSecondary = timerHoursBoxL.lastElementChild
+    const timerMinutesSecondary = timerMinutesBoxL.lastElementChild
+    const timerSecondsSecondary = timerSecondsBoxL.lastElementChild
+
+    const timeEqualify = () => {
+        timerDaysSecondary = timerDays
+        timerHoursSecondary = timerHours
+        timerMinutesSecondary = timerMinutes
+        timerSecondsSecondary = timerSeconds
+    }
 
     let intervalID
 
@@ -61,14 +73,8 @@ const timer = (discount) => {
                 timerSeconds.textContent = '0' + getTime.seconds
             }
         }
-        const timeEqualify = () => {
-            timerDaysBoxs[1].lastElementChild.textContent = timerDays.textContent
-            timerHoursBoxs[1].lastElementChild.textContent = timerHours.textContent
-            timerMinutesBoxs[1].lastElementChild.textContent = timerMinutes.textContent
-            timerSecondsBoxs[1].lastElementChild.textContent = timerSeconds.textContent
-        }
         zeroToNumber()
-        timeEqualify()
+        time
     }
     updateClock()
 }
