@@ -48,16 +48,16 @@ const timer = (discount) => {
             clearInterval(intervalID)
         }
         const zeroToNumber = () => {
-            if (getTime.days < 10 && getTime.days > 0) {
+            if (getTime.days < 10 && getTime.days >= 0) {
                 timerDays.textContent = '0' + getTime.days
             } 
-            if (getTime.hours < 10 && getTime.days > 0) {
+            if (getTime.hours < 10 && getTime.days >= 0) {
                 timerHours.textContent = '0' + getTime.hours
             }
-            if (getTime.minutes < 10 && getTime.days > 0) {
+            if (getTime.minutes < 10 && getTime.days >= 0) {
                 timerMinutes.textContent = '0' + getTime.minutes
             }
-            if (getTime.seconds < 10 && getTime.days > 0) {
+            if (getTime.seconds < 10 && getTime.days >= 0) {
                 timerSeconds.textContent = '0' + getTime.seconds
             }
         }
