@@ -40,7 +40,7 @@ const timer = (discount) => {
             intervalID = setInterval(() => {
                             updateClock()
                         }, 1000);
-        } else if (getTime.timeRemaining < 0) {
+        } else if (getTime.timeRemaining <= 0) {
             timerDays.textContent = '00'
             timerHours.textContent = '00'
             timerMinutes.textContent = '00'
@@ -48,16 +48,16 @@ const timer = (discount) => {
             clearInterval(intervalID)
         }
         const zeroToNumber = () => {
-            if (getTime.days < 10) {
+            if (getTime.days < 10 && getTime.days > 0) {
                 timerDays.textContent = '0' + getTime.days
             } 
-            if (getTime.hours < 10) {
+            if (getTime.hours < 10 && getTime.days > 0) {
                 timerHours.textContent = '0' + getTime.hours
             }
-            if (getTime.minutes < 10) {
+            if (getTime.minutes < 10 && getTime.days > 0) {
                 timerMinutes.textContent = '0' + getTime.minutes
             }
-            if (getTime.seconds < 10) {
+            if (getTime.seconds < 10 && getTime.days > 0) {
                 timerSeconds.textContent = '0' + getTime.seconds
             }
         }
