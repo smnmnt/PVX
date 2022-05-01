@@ -16,7 +16,37 @@
   \**********************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _modules_modal__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modules/modal */ \"./src/modules/modal.js\");\n/* harmony import */ var _modules_sliderFirst__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modules/sliderFirst */ \"./src/modules/sliderFirst.js\");\n/* harmony import */ var _modules_sliderSecond__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modules/sliderSecond */ \"./src/modules/sliderSecond.js\");\n/* harmony import */ var _modules_timer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./modules/timer */ \"./src/modules/timer.js\");\n/* harmony import */ var _modules_toTop__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./modules/toTop */ \"./src/modules/toTop.js\");\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n(0,_modules_sliderFirst__WEBPACK_IMPORTED_MODULE_1__[\"default\"])()\r\n;(0,_modules_sliderSecond__WEBPACK_IMPORTED_MODULE_2__[\"default\"])()\r\n;(0,_modules_modal__WEBPACK_IMPORTED_MODULE_0__[\"default\"])()\r\n;(0,_modules_toTop__WEBPACK_IMPORTED_MODULE_4__[\"default\"])()\r\n;(0,_modules_timer__WEBPACK_IMPORTED_MODULE_3__[\"default\"])('8 may 2022')\n\n//# sourceURL=webpack://middle_diplom/./src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _modules_calculatorCounter__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modules/calculatorCounter */ \"./src/modules/calculatorCounter.js\");\n/* harmony import */ var _modules_calculatorValidator__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modules/calculatorValidator */ \"./src/modules/calculatorValidator.js\");\n/* harmony import */ var _modules_modal__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modules/modal */ \"./src/modules/modal.js\");\n/* harmony import */ var _modules_sliderFirst__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./modules/sliderFirst */ \"./src/modules/sliderFirst.js\");\n/* harmony import */ var _modules_sliderSecond__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./modules/sliderSecond */ \"./src/modules/sliderSecond.js\");\n/* harmony import */ var _modules_timer__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./modules/timer */ \"./src/modules/timer.js\");\n/* harmony import */ var _modules_toTop__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./modules/toTop */ \"./src/modules/toTop.js\");\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n(0,_modules_sliderFirst__WEBPACK_IMPORTED_MODULE_3__[\"default\"])()\r\n;(0,_modules_sliderSecond__WEBPACK_IMPORTED_MODULE_4__[\"default\"])()\r\n;(0,_modules_modal__WEBPACK_IMPORTED_MODULE_2__[\"default\"])()\r\n;(0,_modules_toTop__WEBPACK_IMPORTED_MODULE_6__[\"default\"])()\r\n;(0,_modules_timer__WEBPACK_IMPORTED_MODULE_5__[\"default\"])('8 may 2022')\r\n;(0,_modules_calculatorCounter__WEBPACK_IMPORTED_MODULE_0__[\"default\"])()\r\n;(0,_modules_calculatorValidator__WEBPACK_IMPORTED_MODULE_1__[\"default\"])()\n\n//# sourceURL=webpack://middle_diplom/./src/index.js?");
+
+/***/ }),
+
+/***/ "./src/modules/calculatorCounter.js":
+/*!******************************************!*\
+  !*** ./src/modules/calculatorCounter.js ***!
+  \******************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var _helpers__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./helpers */ \"./src/modules/helpers.js\");\n\r\n\r\nconst calculatorCounter = () => {\r\n    const calcType = document.getElementById('calc-type')\r\n    const calcMaterial = document.getElementById('calc-type-material')\r\n    const calcSquare = document.getElementById('calc-input')\r\n    const total = document.getElementById('calc-total')\r\n\r\n    const countCalc = () => {\r\n        const calcTypeValue = +calcType.options[calcType.selectedIndex].value\r\n        const calcMaterialValue = +calcMaterial.options[calcMaterial.selectedIndex].value\r\n        const calcSquareValue = calcSquare.value\r\n\r\n        let totalValue = 0\r\n\r\n        calcType.options[0].value = '0'\r\n        calcMaterial.options[0].value = '0'\r\n        \r\n        if (calcType.value && calcSquare.value && calcMaterial.value){\r\n            totalValue = calcSquareValue * calcTypeValue * calcMaterialValue\r\n\r\n            ;(0,_helpers__WEBPACK_IMPORTED_MODULE_0__.animate)({\r\n                duration: 1000,\r\n                timing(timeFraction) {\r\n                  return timeFraction;\r\n                },\r\n                draw(progress) {\r\n                    total.placeholder = Math.round(totalValue * progress)\r\n                }\r\n              });\r\n        } \r\n        else{\r\n            totalValue = 0\r\n        }\r\n    }\r\n\r\n    document.addEventListener('change', (e) => {\r\n        if ( e.target === calcSquare ||\r\n            e.target === calcType || e.target === calcMaterial){\r\n\r\n                countCalc()\r\n        }\r\n    })\r\n    // console.log(calcTypeValue)\r\n    // console.log(calcMaterialValue);\r\n    // console.log(calcSquareValue);\r\n    // console.log(totalValue);\r\n}\r\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (calculatorCounter);\n\n//# sourceURL=webpack://middle_diplom/./src/modules/calculatorCounter.js?");
+
+/***/ }),
+
+/***/ "./src/modules/calculatorValidator.js":
+/*!********************************************!*\
+  !*** ./src/modules/calculatorValidator.js ***!
+  \********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\nconst calculatorValidator = () => {\r\n    const calcSquare = document.getElementById('calc-input')\r\n\r\n    const numberEnable = (e) => {\r\n        e.target.value = e.target.value.replace(/\\D+/, \"\")  \r\n    }\r\n    calcSquare.addEventListener('input', numberEnable)\r\n}\r\n\r\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (calculatorValidator);\n\n//# sourceURL=webpack://middle_diplom/./src/modules/calculatorValidator.js?");
+
+/***/ }),
+
+/***/ "./src/modules/helpers.js":
+/*!********************************!*\
+  !*** ./src/modules/helpers.js ***!
+  \********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"animate\": () => (/* binding */ animate)\n/* harmony export */ });\nconst animate = ({timing, draw, duration}) => {\r\n\r\n    let start = performance.now();\r\n  \r\n    requestAnimationFrame(function animate(time) {\r\n      let timeFraction = (time - start) / duration;\r\n      if (timeFraction > 1) timeFraction = 1;\r\n  \r\n      let progress = timing(timeFraction);\r\n  \r\n      draw(progress);\r\n  \r\n      if (timeFraction < 1) {\r\n        requestAnimationFrame(animate);\r\n      }\r\n  \r\n    });\r\n  }\r\n\r\n  \n\n//# sourceURL=webpack://middle_diplom/./src/modules/helpers.js?");
 
 /***/ }),
 
