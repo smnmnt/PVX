@@ -2,6 +2,7 @@ const toTop = () => {
     const smoothScrollBtn = document.querySelector('.smooth-scroll')
 
     smoothScrollBtn.style.display = 'none'
+    smoothScrollBtn.style.cursor = 'pointer'
     
     const trackingScroll = () => {
         let scrolled = window.scrollY
