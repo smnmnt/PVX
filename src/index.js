@@ -1,14 +1,12 @@
 import calculatorCounter from './modules/calculatorCounter'
 import formSender from './modules/formSender'
 import modal from './modules/modal'
-import sliderFirst from './modules/sliderFirst'
-import sliderSecond from './modules/sliderSecond'
+import sliders from './modules/sliders'
 import timer from './modules/timer'
 import toTop from './modules/toTop'
 
 
-sliderFirst()
-sliderSecond()
+sliders()
 modal()
 toTop()
 timer('8 may 2022')

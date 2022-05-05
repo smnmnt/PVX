@@ -51,7 +51,6 @@ const formSender = ({formId, someElem = [] }) => {
         const formElements = form.querySelectorAll('input')
         const formData = new FormData(form)
         const formBody = {}
-
         statusBlock.textContent = loadText
         form.append(statusBlock)
 
@@ -59,7 +58,22 @@ const formSender = ({formId, someElem = [] }) => {
             formBody[key] = val
         })
 
-        if (validChecker(formElements)) {
+        
+        someElem.forEach(elem => {
+            const element = document.getElementById(elem.id)
+            if (document.querySelector('body').classList.contains('balkony')) {
+                if(element == null) {
+                    console.log('Верните блок!');
+                } else {
+                    if (elem.type === 'block') {
+                        formBody[elem.id] = element.value
+                    }
+                }
+            }
+            
+        })
+
+        if (validate(formElements)) {
             sendData(formBody)
                 .then(data => {
                     statusBlock.textContent = successText
@@ -67,17 +81,20 @@ const formSender = ({formId, someElem = [] }) => {
                     formElements.forEach(input => {
                         input.value = ''
                     })
+                    setTimeout(() => {
+                        statusBlock.remove()
+                    }, 2000)
                 })
                 .catch(error => {
                     statusBlock.textContent = errorText
                 })
             
         } else {
-            alert('Некорректное заполнение полей!')
+            alert('Поля заполнены неверно!')
             statusBlock.textContent = errorText
         }
     }
-    formValidator()
+    
     try {
         if (!form) {
             throw new Error ('Проблемы с формой')
