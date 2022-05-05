@@ -73,7 +73,7 @@ const formSender = ({formId, someElem = [] }) => {
             
         })
 
-        if (validate(formElements)) {
+        if (formValidator(formElements)) {
             sendData(formBody)
                 .then(data => {
                     statusBlock.textContent = successText
