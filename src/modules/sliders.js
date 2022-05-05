@@ -92,10 +92,12 @@ const sliders = () => {
                 if (currentSlide < 0) {
                     currentSlide = benefitItems.length - 1
                 }
+                
                 nextSlide(benefitItems, currentSlide, 'not-active')
             })
             servicesArrows.addEventListener('click', (e) => {
                 prevSlide(cards, currentSlide, 'not-active')
+
                 if (e.target.closest('.services__arrow--right')) {
                     currentSlide++
                 } else if (e.target.closest('.services__arrow--left')) {

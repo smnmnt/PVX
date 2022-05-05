@@ -11,6 +11,32 @@ const formSender = ({formId, someElem = [] }) => {
     const errorText = 'Что-то пошло не так.'
     const successText = 'Успешно. С Вами свяжутся.'
 
+    const validChecker = (formElements) => {
+        let success = true
+        formElements.forEach(inputName => {
+            if (inputName === '') {
+                success = false
+            }
+            if (inputName.getAttribute('name') == 'fio') {
+                if (inputName.value.match(/[^а-яА-Я\^a-zA-Z\s]/g)) {
+                    success = false
+                }
+            }
+        })
+        formElements.forEach(inputPhone => {
+            if (inputPhone.value === '') {
+                success = false
+            }
+            if (inputPhone.getAttribute('name') == 'phone') {
+                if (inputPhone.value.match(/[^0-9\(\)\+\-]/g)) {
+                    success = false
+                }
+            } 
+        })
+
+        return success
+    }
+
     const sendData = (data) => {
         return fetch('https://jsonplaceholder.typicode.com/posts', {
             method: 'POST',
@@ -20,11 +46,12 @@ const formSender = ({formId, someElem = [] }) => {
             }
         }).then(res => res.json())
     }
-    
+
     const submitForm = () => {
         const formElements = form.querySelectorAll('input')
         const formData = new FormData(form)
         const formBody = {}
+
         statusBlock.textContent = loadText
         form.append(statusBlock)
 
@@ -32,22 +59,7 @@ const formSender = ({formId, someElem = [] }) => {
             formBody[key] = val
         })
 
-        
-        someElem.forEach(elem => {
-            const element = document.getElementById(elem.id)
-            if (document.querySelector('body').classList.contains('balkony')) {
-                if(element == null) {
-                    console.log('Верните блок!');
-                } else {
-                    if (elem.type === 'block') {
-                        formBody[elem.id] = element.value
-                    }
-                }
-            }
-            
-        })
-
-        if (formValidator(formElements)) {
+        if (validChecker(formElements)) {
             sendData(formBody)
                 .then(data => {
                     statusBlock.textContent = successText
@@ -55,20 +67,17 @@ const formSender = ({formId, someElem = [] }) => {
                     formElements.forEach(input => {
                         input.value = ''
                     })
-                    setTimeout(() => {
-                        statusBlock.remove()
-                    }, 2000)
                 })
                 .catch(error => {
                     statusBlock.textContent = errorText
                 })
-            
+
         } else {
-            alert('Поля заполнены неверно!')
+            alert('Некорректное заполнение полей!')
             statusBlock.textContent = errorText
         }
     }
-    
+    formValidator()
     try {
         if (!form) {
             throw new Error ('Проблемы с формой')
@@ -76,7 +85,7 @@ const formSender = ({formId, someElem = [] }) => {
 
         form.addEventListener('submit', (event) => {
             event.preventDefault()
-    
+
             submitForm()
         })
     } catch (error) {
@@ -84,4 +93,4 @@ const formSender = ({formId, someElem = [] }) => {
     }
 }
 
-export default formSender
+export default formSender 

@@ -1,20 +1,17 @@
-const formValidator = (formElements) => {
-    let success = true
-        formElements.forEach(input => {
-           if (input.name == 'fio') {
-                if (input.value === '') {
-                    success = false
-                } else if (input.value.match(/[^а-яА-Я\^a-zA-Z\s]/g)) {
-                    success = true
-                }
-            } else if (input.name == 'phone') {
-                if (input.value === '') {
-                    success = false
-                } else if (input.value.match(/[^0-9\(\)\+\-]/g)) {
-                    success = true
-                }
-            } 
+const formValidator = () => {
+    const formName = document.querySelectorAll('[placeholder="ваше имя"]')
+    const formTelephone = document.querySelectorAll('[placeholder="ваш телефон"]')
+
+    formName.forEach(formName =>
+        formName.addEventListener('input', (e) => {
+            e.target.value = e.target.value.replace(/[^а-яА-Я\^a-zA-z@\-\s]/g, "") 
+    }))
+
+    formTelephone.forEach(formTelephone =>
+        formTelephone.addEventListener('input', (e) => {
+            e.target.value = e.target.value.replace(/[^0-9\(\)\+]/g, "")
         })
-        return success
-    }
-export default formValidator
+    )
+}
+    
+export default formValidator 
