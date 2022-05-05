@@ -11,32 +11,6 @@ const formSender = ({formId, someElem = [] }) => {
     const errorText = 'Что-то пошло не так.'
     const successText = 'Успешно. С Вами свяжутся.'
 
-    const validChecker = (formElements) => {
-        let success = true
-        formElements.forEach(inputName => {
-            if (inputName === '') {
-                success = false
-            }
-            if (inputName.getAttribute('name') == 'fio') {
-                if (inputName.value.match(/[^а-яА-Я\^a-zA-Z\s]/g)) {
-                    success = false
-                }
-            }
-        })
-        formElements.forEach(inputPhone => {
-            if (inputPhone.value === '') {
-                success = false
-            }
-            if (inputPhone.getAttribute('name') == 'phone') {
-                if (inputPhone.value.match(/[^0-9\(\)\+\-]/g)) {
-                    success = false
-                }
-            } 
-        })
-
-        return success
-    }
-
     const sendData = (data) => {
         return fetch('https://jsonplaceholder.typicode.com/posts', {
             method: 'POST',
