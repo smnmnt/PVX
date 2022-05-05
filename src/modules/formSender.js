@@ -19,7 +19,7 @@ const formSender = ({formId, someElem = [] }) => {
             }
             if (inputName.getAttribute('name') == 'fio') {
                 if (inputName.value.match(/[^а-яА-Я\^a-zA-Z\s]/g)) {
-                    success = false
+                    success = true
                 }
             }
         })
@@ -28,8 +28,8 @@ const formSender = ({formId, someElem = [] }) => {
                 success = false
             }
             if (inputPhone.getAttribute('name') == 'phone') {
-                if (inputPhone.value.match(/[^0-9\(\)\+\-]/g)) {
-                    success = false
+                if (inputPhone.value.match(/[^0-9\+]/g)) {
+                    success = true
                 }
             } 
         })
@@ -59,14 +59,12 @@ const formSender = ({formId, someElem = [] }) => {
             formBody[key] = val
         })
 
+        
+
         if (validChecker(formElements)) {
             sendData(formBody)
-                .then(data => {
+                .then(() => {
                     statusBlock.textContent = successText
-
-                    formElements.forEach(input => {
-                        input.value = ''
-                    })
                 })
                 .catch(error => {
                     statusBlock.textContent = errorText
@@ -74,10 +72,22 @@ const formSender = ({formId, someElem = [] }) => {
 
         } else {
             alert('Некорректное заполнение полей!')
+            
             statusBlock.textContent = errorText
         }
+        formElements.forEach(input => {
+            input.value = ''
+        })
     }
     formValidator()
+
+    const logger = () => {
+        const formData = new FormData(form)
+        console.log(Array.from.formData);
+        formData.forEach((a) => {
+            console.log(a);
+        })
+    }
     try {
         if (!form) {
             throw new Error ('Проблемы с формой')
@@ -90,6 +100,7 @@ const formSender = ({formId, someElem = [] }) => {
         })
     } catch (error) {
         console.log(error.message);
+        
     }
 }
 
