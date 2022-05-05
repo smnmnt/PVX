@@ -7,7 +7,7 @@ const modal = () => {
     const closeBtns = document.querySelectorAll('[title="Close"]')
     const fancyBtns = document.querySelectorAll('.fancyboxModal')
 
-    console.log(closeBtns);
+    // console.log(closeBtns);
 
     fancyBtns.forEach(btn => {
         btn.addEventListener('click', (e) => {

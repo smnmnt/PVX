@@ -1,5 +1,6 @@
 const sliderFirst = () => {
     const benefitItems = document.querySelectorAll('.benefits__item')
+    const benefitArrows = document.querySelectorAll('benefits__arrow')
 
     const style = '.not-active {display:none}'
     const styleCreate = document.createElement('style')
@@ -22,25 +23,23 @@ const sliderFirst = () => {
 
     checkForInnerWidth()
     
+    const classSwitcher = () => {
+        benefitItems.forEach(benefitItem => {
+            if (benefitItem.classList.contains('not-active')) {
+                benefitItem.classList.remove('not-active')
+            } else {
+                benefitItem.classList.add('not-active')
+            }
+        })
+        
+    }
 
     document.addEventListener('click', (e) => {
         if (e.target.closest('.benefits__arrow--right')) {
-            benefitItems.forEach(benefitItem => {
-                if (benefitItem.classList.contains('not-active')) {
-                    benefitItem.classList.remove('not-active')
-                } else {
-                    benefitItem.classList.add('not-active')
-                }
-            })
+            classSwitcher()
         }
         if (e.target.closest('.benefits__arrow--left')) {
-            benefitItems.forEach(benefitItem => {
-                if (benefitItem.classList.contains('not-active')) {
-                    benefitItem.classList.remove('not-active')
-                } else {
-                    benefitItem.classList.add('not-active')
-                }
-            })
+            classSwitcher()
         }
     })
 }
