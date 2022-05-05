@@ -1,6 +1,5 @@
 const sliderFirst = () => {
     const benefitItems = document.querySelectorAll('.benefits__item')
-    const benefitArrows = document.querySelectorAll('benefits__arrow')
 
     const style = '.not-active {display:none}'
     const styleCreate = document.createElement('style')
