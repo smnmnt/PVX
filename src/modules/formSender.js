@@ -1,15 +1,30 @@
-import formValidator from './formValidator'
-
 const formSender = ({formId, someElem = [] }) => {
-    const form = document.querySelector(formId)
+    const form = document.getElementById(formId)
     const statusBlock = document.createElement('div')
 
-    const inputPhone = document.querySelectorAll('[name="phone"]')
-    const inputName = document.querySelectorAll('[name="fio"]')
+    const loadText = 'Идет загрузка...'
+    const errorText = 'Что-то пошло не так...'
+    const successText = 'Успешно! Скоро мы с Вами свяжемся'
 
-    const loadText = 'Идет загрузка. Подождите.'
-    const errorText = 'Что-то пошло не так.'
-    const successText = 'Успешно. С Вами свяжутся.'
+    const validate = (formElements) => {
+        let success = true
+        formElements.forEach(input => {
+           if (input.name == 'fio') {
+                if (input.value === '') {
+                    success = false
+                } else if (input.value.match(/[^а-яА-Я\^a-zA-Z\s]/g)) {
+                    success = false
+                }
+            } else if (input.name == 'phone') {
+                if (input.value === '') {
+                    success = false
+                } else if (input.value.match(/[^0-9\(\)\+\-]/g)) {
+                    success = false
+                }
+            } 
+        })
+        return success
+    }
 
     const sendData = (data) => {
         return fetch('https://jsonplaceholder.typicode.com/posts', {
@@ -47,7 +62,7 @@ const formSender = ({formId, someElem = [] }) => {
             
         })
 
-        if (formValidator(formElements)) {
+        if (validate(formElements)) {
             sendData(formBody)
                 .then(data => {
                     statusBlock.textContent = successText
@@ -64,24 +79,23 @@ const formSender = ({formId, someElem = [] }) => {
                 })
             
         } else {
-            alert('Поля заполнены неверно!')
+            alert('Некорректное заполнение полей!')
             statusBlock.textContent = errorText
+            setTimeout(() => {
+                statusBlock.remove()
+            }, 2000)
         }
     }
-    
+
     try {
         if (!form) {
-            throw new Error ('Проблемы с формой')
+            throw new Error ('Верните форму')
         }
-
-        form.addEventListener('submit', (event) => {
-            event.preventDefault()
-    
-            submitForm()
-        })
+        submitForm()
     } catch (error) {
         console.log(error.message);
     }
+    
+    
 }
-
 export default formSender
