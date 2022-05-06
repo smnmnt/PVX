@@ -9,8 +9,7 @@ const imageZoom = () => {
     
     const imgs = document.querySelectorAll('.sertificate-document');
     const disableImgAttributes = document.querySelectorAll('.sertificate-document')
-    
-    const hoverEffectImgs = document.querySelectorAll('.img-responsive')
+    const hoverEffectImgs = document.querySelectorAll('.sertificate-document')
     
     hoverEffectImgs.forEach(hoverEffectImg => {
         hoverEffectImg.addEventListener('mouseover', () => {
@@ -19,12 +18,13 @@ const imageZoom = () => {
         })
         hoverEffectImg.addEventListener('mouseout', () => {
             hoverEffectImg.style.transition = '0.2'
-            hoverEffectImg.style.opacity = "0"
+            hoverEffectImg.style.opacity = "1"
         })
     })
     
     disableImgAttributes.forEach(disableImgAttributes => {
         disableImgAttributes.setAttribute('href', '')
+        disableImgAttributes.style.cursor = 'help'
     })
     
     const addModalDocument = () => {
