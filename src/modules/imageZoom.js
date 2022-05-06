@@ -1,5 +1,5 @@
 const imageZoom = () => {
-    const style = '.modal-img { z-index: 99; position: fixed; top: 2%; left: 33%; background: url(../images/documents/original/document4.jpg) center / cover; width: 654px; height: 900px; transition: 200ms;}'
+    const style = '.modal-img { z-index: 99; position: fixed; top: 2%; left: 33%; background: url(./images/documents/original/document4.jpg) center / cover; width: 654px; height: 900px; transition: 200ms;}'
     const styleCreate = document.createElement('style')
     styleCreate.innerText = style
     document.head.appendChild(styleCreate)
