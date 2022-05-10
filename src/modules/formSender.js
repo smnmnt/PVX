@@ -94,8 +94,6 @@ const formSender = ({formId, someElem = [] }) => {
         submitForm()
     } catch (error) {
         console.log(error.message);
-    }
-    
-    
+    }   
 }
 export default formSender

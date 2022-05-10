@@ -1,12 +1,13 @@
 import calculatorCounter from './modules/calculatorCounter'
 import formSender from './modules/formSender'
+import formValidator from './modules/formValidator'
 import imageZoom from './modules/imageZoom'
 import modal from './modules/modal'
 import sliders from './modules/sliders'
 import timer from './modules/timer'
 import toTop from './modules/toTop'
 
-
+formValidator()
 sliders()
 modal()
 toTop()
