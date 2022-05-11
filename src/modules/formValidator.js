@@ -1,6 +1,6 @@
 const formValidator = () => {
-    const formName = document.querySelectorAll('[placeholder="ваше имя"]')
-    const formTelephone = document.querySelectorAll('[placeholder="ваш телефон"]')
+    const formName = document.querySelectorAll('[name="fio"]')
+    const formTelephone = document.querySelectorAll('[name="phone"]')
 
     formName.forEach(formName =>
         formName.addEventListener('input', (e) => {

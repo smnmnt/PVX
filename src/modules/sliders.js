@@ -43,9 +43,6 @@ const sliders = () => {
         })
     }
 
-    checkForInnerWidth(benefitItems)
-    checkForInnerWidth(cards)
-    
     const classSwitcher = (item) => {
         item.forEach(item => {
             if (item.classList.contains('not-active')) {
@@ -78,6 +75,10 @@ const sliders = () => {
     const nextSlide = (elems, index, strClass) => {
         elems[index].classList.remove(strClass)
     }
+
+    checkForInnerWidth(benefitItems)
+    checkForInnerWidth(cards)
+    
 
     // benefitsContent.addEventListener('click', (e) => {
         

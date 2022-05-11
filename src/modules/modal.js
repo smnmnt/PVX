@@ -11,6 +11,7 @@ const modal = () => {
 
     fancyBtns.forEach(btn => {
         btn.addEventListener('click', (e) => {
+            e.preventDefault()
             if (btn.hash === '#callback') {
                 // console.log('#callback');
                 headerModal.style.display = 'block'

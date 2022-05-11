@@ -26,7 +26,7 @@ const calculatorCounter = () => {
                       return timeFraction;
                     },
                     draw(progress) {
-                        total.placeholder = Math.round(totalValue * progress)
+                        total.value = Math.round(totalValue * progress)
                     }
                   });
             } 
